@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://1.82.184.60:3306/wallet_906
+    username: root
+    password: GEhua@123!@
+
+
+
+
