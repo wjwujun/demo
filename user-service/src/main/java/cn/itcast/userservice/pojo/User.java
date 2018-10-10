@@ -1,5 +1,4 @@
-package cn.itcast.pojo;
-
+package cn.itcast.userservice.pojo;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
