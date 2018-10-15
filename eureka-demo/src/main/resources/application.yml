@@ -8,6 +8,6 @@ eureka:
     register-with-eureka: false   #不把自己做为eureka服务注册
     fetch-registry: false      #不拉取服务列表
     service-url:    #eureka 服务地址
-      defaultZone: http://127.0.0.1:10086/eureka
+      defaultZone: http://127.0.0.1:${server.port}/eureka
 
 
