@@ -15,7 +15,6 @@ public class HelloController {
     private UserService userService;
     @GetMapping("/{id}")
     public User queryGetById(@PathVariable("id") Long id){
-        System.out.println(id);
         return  this.userService.queryGetById(id);
 
     }
