@@ -1,13 +1,14 @@
 server:
-  port: 10087
+  port: 10086
 spring:
   application:
     name: eureka-server
 eureka:
   client:
-    register-with-eureka: true   #把自己做为eureka服务注册
-    fetch-registry: true      #拉取服务列表
+    register-with-eureka: true   #把自己做为eureka服务注册true或者flase
+    fetch-registry: true      #拉取服务列表true或者flase
     service-url:    #eureka 服务注册地址
       defaultZone: http://127.0.0.1:10086/eureka
-
+  server:
+    eviction-interval-timer-in-ms: 5000       #定时剔除失效节点,默认60(600000毫秒)秒执行一次
 

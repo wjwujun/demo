@@ -15,8 +15,10 @@ mybatis:
 eureka:         #配置eureka客户端
   client:
     service-url:  #eureka服务地址
-      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
-
-
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 10  #10秒中过期，10秒钟没有接收到心跳，就剔除节点
+    lease-renewal-interval-in-seconds:  5    #5秒一次心跳
+    instance-id:  ${spring.application.name}:${server.port}   #修改实列的id
 
 

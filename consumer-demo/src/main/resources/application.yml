@@ -7,7 +7,7 @@ eureka:         #配置eureka客户端
   client:
     service-url:
       defaultZone: http://127.0.0.1:10086/eureka
-
+    registry-fetch-interval-seconds: 5 #每5秒拉取一次服务列表
 
 
 
