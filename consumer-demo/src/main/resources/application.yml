@@ -3,11 +3,26 @@ server:
 spring:
   application:
     name: user-consumer
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true        #开启重试机制，一台服务挂了，自动连接下一台，不直接报错给前端用户
 eureka:         #配置eureka客户端
   client:
     service-url:
       defaultZone: http://127.0.0.1:10086/eureka
     registry-fetch-interval-seconds: 5 #每5秒拉取一次服务列表
+
+user-service:
+  ribbon:
+    ConnecTimeout: 250    #ribbon的连续超时时间，单位毫秒ms
+    ReadTimeout: 1000     #ribbon的数据读取超时时间，单位毫秒ms
+    okToRtryonAllOperations: true    #是否对所有操作进行重试
+    MaxAutoRetriesNextServer: 1     #切换实列的重试次数
+    MaxAutoRetries: 1       #对当前实列的重试次数
+
+
+
 
 
 
