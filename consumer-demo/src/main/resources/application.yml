@@ -13,14 +13,25 @@ eureka:         #配置eureka客户端
       defaultZone: http://127.0.0.1:10086/eureka
     registry-fetch-interval-seconds: 5 #每5秒拉取一次服务列表
 
-user-service:
-  ribbon:
-    ConnecTimeout: 250    #ribbon的连续超时时间，单位毫秒ms
-    ReadTimeout: 1000     #ribbon的数据读取超时时间，单位毫秒ms
-    okToRtryonAllOperations: true    #是否对所有操作进行重试
-    MaxAutoRetriesNextServer: 1     #切换实列的重试次数
-    MaxAutoRetries: 1       #对当前实列的重试次数
+ribbon: #所有服务的负载均衡配置
+  ConnecTimeout: 250    #ribbon的连续超时时间，单位毫秒ms
+  ReadTimeout: 1000     #ribbon的数据读取超时时间，单位毫秒ms
+  okToRtryonAllOperations: true    #是否对所有操作进行重试
+  MaxAutoRetriesNextServer: 1     #切换实列的重试次数
+  MaxAutoRetries: 1   #对当前实列的重试次数
 
+
+feign:
+  hystrix:
+    enabled: true  #开启frign的熔断功能，底层支持的是hystrix，默认是关闭的
+
+
+hystrix:
+  command:
+    execution:
+      isolation:
+        thread:
+          timeoutInMillisecond: 6000 #设置hystrix的超时时间，要比rbbion的重试时间长，不然服务故障的时候，会直接熔断不会进行重试机制
 
 
 
