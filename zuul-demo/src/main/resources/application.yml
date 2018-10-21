@@ -1,0 +1,41 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway
+#zuul:
+#  routes:
+#    user-service:       #这里是路由id，随意写
+#      path: /user-service/**    #这里是映射路径
+#      serverId: user-service    #指定服务的名称
+
+zuul:
+  routes:
+    user-service: /user-service/**      #简化配置(甚至可以全部省略，默认浏览器访问的时候带上服务名)
+  prefix: /api        #前缀
+  retryable: true
+
+eureka:         #配置eureka客户端
+  client:
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+
+
+
+ribbon: #所有服务的负载均衡配置
+  ConnecTimeout: 250    #ribbon的连续超时时间，单位毫秒ms
+  ReadTimeout: 1000     #ribbon的数据读取超时时间，单位毫秒ms
+  okToRtryonAllOperations: true    #是否对所有操作进行重试
+  MaxAutoRetriesNextServer: 1     #切换实列的重试次数
+  MaxAutoRetries: 1   #对当前实列的重试次数
+
+hystrix:
+  command:
+    execution:
+      isolation:
+        thread:
+          timeoutInMillisecond: 6000 #设置hystrix的超时时间，要比rbbion的重试时间长，不然服务故障的时候，会直接熔断不会进行重试机制
+
+
+
