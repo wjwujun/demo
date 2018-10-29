@@ -2,7 +2,6 @@ package cn.itcast.consumer.service;
 
 
 import cn.itcast.consumer.dao.UserClient;
-import cn.itcast.consumer.dao.UserDao;
 import cn.itcast.consumer.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
